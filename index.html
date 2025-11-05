@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Хроники Степи — Игровое меню</title>
+
+  <!-- Шрифты -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Стили -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="stage">
+    <div class="grain"></div>
+
+    <!-- Контентная область на гриде -->
+    <div class="shell">
+      <div class="brand">
+        <div class="logoWrap" aria-label="Хроники Степи — логотип">
+          <div class="logo"></div>
+        </div>
+        <h1 class="title">Хроники Степи</h1>
+        <p class="subtitle">
+          Погружение в эпос Великой степи: дипломатия, стелс и стратегия в Отырар, охота с беркутом, хроники учёных.
+        </p>
+      </div>
+
+      <div class="hero">
+        <img class="heroImg" src="character.png" alt="Всадник с беркутом" onerror="this.style.display='none'">
+      </div>
+
+      <nav class="card" aria-label="Главное меню">
+        <div class="menu">
+          <button class="btn primary" id="startBtn">Начать новую игру <span class="spark"></span></button>
+          <button class="btn" id="continueBtn">Продолжить <span class="spark"></span></button>
+          <div class="row">
+            <button class="btn" id="chronBtn">Хронология <span class="spark"></span></button>
+            <button class="btn" id="encyBtn">Энциклопедия <span class="spark"></span></button>
+          </div>
+          <div class="row">
+            <button class="btn" id="trialsBtn">Режим испытаний <span class="spark"></span></button>
+            <button class="btn" id="settingsBtn">Настройки <span class="spark"></span></button>
+            <button class="btn" id="storeBtn">Магазин <span class="spark"></span></button>
+          </div>
+          <button class="btn" id="exitBtn">Выход <span class="spark"></span></button>
+        </div>
+        <div class="hint">Совет: наведите курсор на кнопки — золото оживает. «Продолжить» активируется после первого сохранения.</div>
+      </nav>
+    </div>
+
+    <!-- Летопись: Пролог (заполняем пропуски) -->
+<dialog id="chronicle">
+  <div class="modal-hd">
+    <h3>Летопись: Пролог</h3>
+    <button class="ghost" id="chronClose">Закрыть</button>
+  </div>
+
+  <div class="modal-bd">
+    <div id="chronCard" class="chron-card">
+      <p>
+        Отырар — важный город на Шёлковом пути у реки
+        <input class="blank" data-answers="сырдарья|syrdarya" placeholder="____">.
+        В 1219 году его осадили войска
+        <input class="blank" data-answers="чингисхана|чингисхан|genghis" placeholder="____">.
+        В традиции казахов почитается охота с
+        <input class="blank" data-answers="беркутом|беркут" placeholder="____"> —
+        символом степной вольности.
+      </p>
+    </div>
+
+    <div class="chron-actions">
+      <button class="ghost" id="chronCheck">Проверить</button>
+      <button class="ghost" id="chronReset">Сбросить</button>
+    </div>
+  </div>
+</dialog>
+
+
+    <footer class="footer">
+      <div class="lang" role="group" aria-label="Язык">
+        <button class="active" data-lang="ru">RU</button>
+        <button data-lang="kk">KK</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <div class="sep"></div>
+      <div class="copy">© 2025 Dynasty • Royal Blue & Gold</div>
+    </footer>
+  </div>
+
+  <!-- Панель магазина: изначально скрыта, открывается по кнопке «Магазин» -->
+  <div class="storeBackdrop" id="storeBackdrop" hidden></div>
+  <aside class="store" id="store" hidden aria-label="Магазин">
+    <header class="store-hd">
+      <h3>Наборы и скины</h3>
+      <button class="ghost" id="storeClose" aria-label="Закрыть магазин">Закрыть</button>
+    </header>
+    <div class="store-body" id="storeBody">
+      <!-- JS заполнит: Стартовый, Стандарт, Скины -->
+    </div>
+  </aside>
+
+  <!-- Диалог «Подробнее» для наборов -->
+  <dialog id="packDialog">
+    <div class="modal-hd">
+      <h3 id="packTitle">Подробнее</h3>
+      <button class="ghost" id="packClose">Закрыть</button>
+    </div>
+    <div class="modal-bd" id="packContent">
+      <!-- сюда JS подставит карточки с изображениями/ценой -->
+    </div>
+    <div class="modal-ft">
+      <button class="ghost" id="packBuy">Купить набор</button>
+    </div>
+  </dialog>
+
+  <!-- Музыка (если потребуется) -->
+  <audio id="bgm" loop preload="auto"></audio>
+
+  <!-- Скрипты -->
+  <script src="main.js"></script>
+</body>
+</html>
